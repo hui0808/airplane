@@ -7,10 +7,6 @@ class Enemy extends AnimationMode {
         this.died = false
     }
 
-    static new(game, enemy, x = 0, y = 0, lifes = 1, frame_times = 3) {
-        return new this(game, enemy, x, y, lifes, frame_times)
-    }
-
     alive() {
         return this.lifes > 0 || !this.died
     }

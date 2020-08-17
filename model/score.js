@@ -4,10 +4,6 @@ class Score extends TextMode {
         this.score = score
     }
 
-    static new(game, score = 0, x = 0, y = 0, font = "25px Arial", color = "#ffffff") {
-        return new this(game, score, x, y, font, color)
-    }
-
     plus(score) {
         this.score += score
     }

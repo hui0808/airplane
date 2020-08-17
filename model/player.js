@@ -11,10 +11,6 @@ class Player extends AnimationMode {
         this.setup()
     }
 
-    static new(game, x = 191, y = 731, frame_times = 3) {
-        return new this(game, x, y, frame_times)
-    }
-
     setup() {
         this.game.registerAction(' ', () => {
             this.fire()

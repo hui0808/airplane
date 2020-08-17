@@ -65,10 +65,6 @@ class SceneMode extends GameObject {
         foreach(this.e, 'destory')
     }
 
-    static new(game, name) {
-        return new this(game, name)
-    }
-
     debug() {
         if (this.enableDebug) {
             foreach(this.e, 'debug')
