@@ -1,6 +1,6 @@
 class Player extends AnimationMode {
-    constructor(game, x = 191, y = 731, frame_times = 3) {
-        super(game, 'player', x, y, frame_times)
+    constructor(game, x = 191, y = 731, rate = 3) {
+        super(game, 'player', x, y, 'normal', rate)
         this.bullet = []
         this.bullet_speed = 30
         this.speed = 10
@@ -41,8 +41,8 @@ class Player extends AnimationMode {
     }
 
     die() {
-        this.index = 1
-        this.frame_index = 1
+        this.status = 'die'
+        this.frameIndex = 1
     }
 
     alive() {
@@ -70,7 +70,7 @@ class Player extends AnimationMode {
             return (bullet.y + bullet.h >= 0)
         })
 
-        if (this.index === 1 && this.frame_index === 0) {
+        if (this.status === 'die' && this.frameIndex === 0) {
             this.died = true
         }
     }

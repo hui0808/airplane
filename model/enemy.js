@@ -1,6 +1,6 @@
 class Enemy extends AnimationMode {
-    constructor(game, enemy, x = 0, y = 0, lifes = 1, frame_times = 3) {
-        super(game, enemy, x, y, frame_times)
+    constructor(game, enemy, x = 0, y = 0, lifes = 1, rate = 3) {
+        super(game, enemy, x, y, 'normal', rate)
         this.lifes = lifes
         this.score = lifes
         this.speed = 5
@@ -12,13 +12,13 @@ class Enemy extends AnimationMode {
     }
 
     die() {
-        this.index = 2
-        this.frame_index = 1
+        this.status = 'die'
+        this.frameIndex = 1
     }
 
     hurt() {
-        this.index = 1
-        this.frame_index = 0
+        this.status = 'hurt'
+        this.frameIndex = 0
     }
 
     bullet_hit(player, callback) {
@@ -42,7 +42,7 @@ class Enemy extends AnimationMode {
     update() {
         super.update();
         this.moveY(this.y + this.speed, 0)
-        if (this.index === 2 && this.frame_index === 0) {
+        if (this.status === 'die' && this.frameIndex === 0) {
             this.died = true
         }
     }
