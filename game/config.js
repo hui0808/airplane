@@ -72,7 +72,7 @@ const images = {
     prop2: 'img/prop2.png',
 }
 
-const config = {
+let config = {
     fps: {
         value: 30,
         text: "fps: ",
