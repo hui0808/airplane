@@ -10,6 +10,6 @@ class Score extends TextMode {
 
     update() {
         super.update()
-        this.text = 'Score: ' + this.score
+        this.text = '得分: ' + this.score
     }
 }

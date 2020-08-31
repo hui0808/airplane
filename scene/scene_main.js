@@ -4,8 +4,9 @@ class Scene extends SceneMode {
         this.e.bg = ImageMode.new(this.game, "bg")
         this.e.player = Player.new(this.game)
         this.e.enemy = [[], [], []]
-        this.e.score = Score.new(this.game, 0, 10, 45, "45px Arial")
+        this.e.score = Score.new(this.game, 0, 10, 45, "30px Arial", '#795548')
         this.enemy_density = [3, 2, 1]
+        this.safe = false
     }
 
     update() {
@@ -43,12 +44,21 @@ class Scene extends SceneMode {
         }
     }
 
+    debug() {
+        super.debug()
+        this.safe = config.player_safe.value
+    }
+
     enemy_create() {
         let temp
         for (let i = 0; i < this.enemy_density.length; i++) {
             if (randomRange(1, 100) <= this.enemy_density[i]) {
                 temp = Enemy.new(this.game, `enemy${i + 1}`, 0, 0, 3 * i + 1)
-                temp.moveX(randomRange(0, this.game.canvas.width - temp.w), 0)
+                if (this.safe === 1) {
+                    temp.moveX(randomRange(this.e.player.w + 10, this.game.canvas.width - temp.w), 0)
+                } else {
+                    temp.moveX(randomRange(0, this.game.canvas.width - temp.w), 0)
+                }
                 temp.moveY(-temp.h, 0)
                 this.e.enemy[i].push(temp)
             }

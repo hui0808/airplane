@@ -79,6 +79,12 @@ let config = {
         min: 1,
         max: 60,
     },
+    player_safe: {
+        value: 0,
+        text: "安全通道：",
+        min: 0,
+        max: 1,
+    },
     bullet_speed: {
         value: 30,
         text: "子弹速度: ",
